@@ -1,3 +1,8 @@
+import 'package:augcard_app/pages/enter_code_page.dart';
+import 'package:augcard_app/pages/login_page.dart';
+import 'package:augcard_app/pages/start_screen_page.dart';
+import 'package:augcard_app/pages/user_joined_page.dart';
+import 'package:augcard_app/styles/app_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,69 +15,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        brightness: Brightness.light,
-        colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Colors.red,
-          accentColor: Colors.amber,
-        ),
-      ),
-      darkTheme: ThemeData(
-        primarySwatch: Colors.amber,
-        brightness: Brightness.dark,
-      ),
-      themeMode: ThemeMode.dark,
-      home: const MyHomePage(
-        title: 'Flutter Demo Home Page',
-      ),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      title: 'Augmented Card Game',
+      theme: AugCardTheme.lightTheme,
+      darkTheme: AugCardTheme.darkTheme,
+      // themeMode: ThemeMode.dark,
+      routes: {
+        StartScreenPage.routeName: (ctx) => const StartScreenPage(),
+        LoginPage.routeName: (ctx) => const LoginPage(),
+        EnterCodePage.routeName: (ctx) => const EnterCodePage(),
+        UserJoinedPage.routeName: (ctx) => const UserJoinedPage(),
+      },
     );
   }
 }
